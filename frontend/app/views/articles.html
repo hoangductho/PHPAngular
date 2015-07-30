@@ -1,0 +1,238 @@
+
+<div id="main-frame" class="container-fluid">
+    <div class=" col-md-3 col-sm-0-max">
+    	<div class="follow-content">
+            <div class="follow-content-header">
+                All Targets
+                <hr>
+            </div>
+            <div class="follow-content-list">
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+                <div class="the-follow">
+                    <div class="the-follow-title">
+                        <a href="#"><p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-8 col-xs-12">
+    	<div class="main-content">
+    		<article>
+    			<div class="article-brand">
+    				<div class="article-social"></div>
+    				<hr>
+    				<div class="article-title">
+    					<h3>[Khắc Phục] Apache không ghi được file trong thư mục 777"</h3>
+    				</div>
+    			</div>
+    			<div class="article-content">
+    				<div markdown-safe-viewer="" class="ng-isolate-scope" content="Khi sử dụng VPS / Server Linux, đặc biệt là các server chạy hệ điều hành Fedora hay RHEL (Red Hat Enterprise Linux), bạn có gặp phải &quot;lỗi&quot; Apache không thể ghi được file vào thư mục được phân quyền 777? Ngay cả khi bạn set &quot;owner:group&quot; là &quot;apache&quot; cho thư mục đó, thì web server của bạn vẫn không tài nào ghi được file.
+
+Nếu bạn rơi vào tình trạng như trên thì nguyên nhân gây lỗi của bạn là chương trình SELinux. Vậy SElinux là gì? Khắc phục hiện tượng trên bằng cách nào?
+
+![apache không ghi được file][1]
+
+**1. SElinux và bảo mật hệ thống**
+
+SELinux - Security-Enhanced Linux, là một module bảo mật trong Linux kernel được phát triển đầu tiên bởi Cơ quan An ninh Quốc Gia Hoa Kỳ (NSA), nhằm cung cấp một cơ chế an ninh và kiểm soát truy cập bắt buộc đối với các dịch vụ hoạt động trong hệ thống theo tiêu chuẩn của Bộ Quốc Phòng Hoa Kỳ.
+
+SELinux kiểm soát các sửa đổi kernel và các công cụ trong không gian người dùng được thêm vào trong các bản phân phối Linux khác nhau. Kiến trúc của nó cố gắng tách biệt việc thực thi các quyết định an ninh với việc phân loại các dịch vụ cần thi hành các chính sách an ninh. 
+
+SELinux khoanh vùng các tập tin và tài nguyên mà các chương trình người dùng và máy chủ hệ thống được phép truy cập, qua đó hạn chế thiệt hại do các ứng dụng độc hại hoặc những ứng dụng lỗi gây ra. Cơ chế khoanh vùng của SELinux hoạt động độc lập với cơ chế kiểm soát truy cập truyền thống của Linux, bỏ qua tất cả các khái niệm và ưu tiên của super-user, và vì thế không có các thiếu sót của hệ thống cũ.
+
+SELinux cung cấp nhiều lựa chọn như kiểm soát truy cập bắt buộc, điều khiển toàn vẹn bắt buộc, kiểm soát truy cập dựa trên vai trò người dùng, an ninh đa cấp và kiểu kiến trúc thực thi. 
+
+Phiên bản SELinux cho cộng đồng mã nguồn mở được NSA giới thiệu lần đầu tiên vào ngày 22/12/2003, và lần đầu tiên được sử dụng trong phiên bản Linux kernel 2.6.0.
+
+Từ những chính sách bảo mật của SELinux bạn có thể hiểu được phần nào lý do Apache của bạn không thể ghi một file vào một thư mục được phân quyền 777 và được set owner là apache. Đó là do SELinux không cho phép Apache tương tác với hệ thống filesystem. Vậy làm thế nào Apache có thể làm việc với filesytem. Bạn có 2 cách: rất tệ và nên.
+
+**2. Giải pháp 1: Rất tệ - Disable SELinux**
+
+Giải pháp nhanh nhất và cũng là tệ nhất đó là vô hiệu hóa SELinux. Như đã trình bày ở trên, vai trò của SELinux trong hệ thống là vô cùng quan trọng. Việc bạn vô hiệu hóa SELinux sẽ khiến cho hệ thống của bạn dễ bị tổn thương trước các cuộc tấn công của tin tặc.
+
+*Bước 1: Disable SELINUX.*
+
+Chuyển SELinux về trạng thái cho phép chạy tất cả dịch vụ. Bạn chạy lệnh: setenforce 0
+Hoặc tắt hẳn SELINUX bằng cách vào file  /etc/selinux/config bạn sửa lại lựa chọn SELINUX=disabled.
+
+
+``` bash
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=mls
+
+```
+
+*Bước 2: Reset lại server.*
+
+**3. Giải pháp 2: Nên dùng - Cho phép 1 dịch vụ được thực thi**
+
+*Bước 1:* Bạn cần chắc chắn là SELINUX đang ở trạng thái &quot;enable&quot; và &quot;enforcing&quot;. Kiểm tra bằng cách chạy lệnh: `sestatus`  và `getenforce`
+
+```bash
+[root@testhost ~]# sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      29
+[root@testhost ~]# getenforce
+Enforcing
+```
+
+*Bước 2:* Cho phép Apache sửa đổi các file dùng chung (quyền 777) được sử dụng trong các hệ thống truyền tải file dùng chung (Apache,  FTP,  rsync, Samba)
+```bash
+setsebool -P httpd_anon_write on
+```
+*Bước 3:* Cho phép Apache sử dụng các file trong không gian người dùng apache (nhưng file có owner là apache).
+```bash
+setsebool -P httpd_use_fusefs on
+```
+*Bước 4:* Cho phép Apache có quyền đọc ghi các file trong filesystem.
+```bash
+setsebool -P httpd_sys_script_anon_write on
+```
+*Bước 5:* Chuyển quyền sở hữu folder sang cho apache
+```bash
+chown apache:apache your_folder_path
+```
+
+Bạn có thể xem các thiết lập với các dịch vụ khác của apache trên server bằng lệnh.
+```bash
+/usr/sbin/getsebool -a | grep httpd
+```
+
+Bạn nên tìm hiểu về ý nghĩa của từng dịch vụ apache tại [Fedora Wiki][2] và [hướng dẫn SELinux][3]
+
+
+  [1]: http://api.vienvong.vn/uploader/a61e75bf3d495eb874cad99d5430da99/avatar_a61e75bf3d495eb874cad99d5430da99.jpg
+  [2]: https://fedoraproject.org/wiki/SELinux/apache
+  [3]: http://www.dsm.fordham.edu/cgi-bin/man-cgi.pl?topic=httpd_selinux&amp;sect=8"></div>
+    			</div>
+    		</article>
+    		<div class="article-comment">
+                <div class="article-comment-title">
+                    <p><i class="fa fa-plus-circle"></i> Comments</p>
+                </div>
+                <div class="article-block">
+                    <form>
+                        <div class="comment-actions">
+                            <button class="btn btn-default">Send</button>
+                            <button class="btn btn-default">Clear</button>
+                        </div>
+                        <markdown-safe suffix="comment"></markdown-safe>
+                    </form>
+                    <hr>
+                    <div class="comment-list">
+                        <div class="comment-detail">
+                            <div class="comment-short-detail">
+                                <div class="comment-user-avatar">
+                                    <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p40x40/10849911_817421938321767_3967735009009354806_n.jpg?oh=892f45efa9a5e19b70985c0b0bcafecb&oe=56214FAD&__gda__=1448791814_6d5eeaa34b6400b8068da8c549609316">
+                                </div>
+                            </div>
+                            <div class="comment-main-detail">
+                                <div class="comment-user-name">Hoang Duc Tho</div>
+                                <div class="comment-content">
+                                    Giải pháp nhanh nhất và cũng là tệ nhất đó là vô hiệu hóa SELinux. Như đã trình bày ở trên, vai trò của SELinux trong hệ thống là vô cùng quan trọng. Việc bạn vô hiệu hóa SELinux sẽ khiến cho hệ thống của bạn dễ bị tổn thương trước các cuộc tấn công của tin tặc.
+
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="comment-detail">
+                            <div class="comment-short-detail">
+                                <div class="comment-user-avatar">
+                                    <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p40x40/10849911_817421938321767_3967735009009354806_n.jpg?oh=892f45efa9a5e19b70985c0b0bcafecb&oe=56214FAD&__gda__=1448791814_6d5eeaa34b6400b8068da8c549609316">
+                                </div>
+                            </div>
+                            <div class="comment-main-detail">
+                                <div class="comment-user-name">Hoang Duc Tho</div>
+                                <div class="comment-content">
+                                    Giải pháp nhanh nhất và cũng là tệ nhất đó là vô hiệu hóa SELinux. Như đã trình bày ở trên, vai trò của SELinux trong hệ thống là vô cùng quan trọng. Việc bạn vô hiệu hóa SELinux sẽ khiến cho hệ thống của bạn dễ bị tổn thương trước các cuộc tấn công của tin tặc.
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-0-max">
+    	<div class="suggest-content">
+            <div class="list-articles">
+                <div class="the-article">
+                    <div class="the-article-thumb">
+                        <img src="http://api.vienvong.vn/uploader/885ecb4091638845f8f538aeda32891c/avatar_885ecb4091638845f8f538aeda32891c.jpg" atl="the-article-title"/>
+                    </div>
+                    <div class="the-article-title">
+                        <a href="#">
+                            <p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="the-article">
+                    <div class="the-article-thumb">
+                        <img src="http://api.vienvong.vn/uploader/885ecb4091638845f8f538aeda32891c/avatar_885ecb4091638845f8f538aeda32891c.jpg" atl="the-article-title"/>
+                    </div>
+                    <div class="the-article-title">
+                        <a href="#">
+                            <p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="the-article">
+                    <div class="the-article-thumb">
+                        <img src="http://api.vienvong.vn/uploader/885ecb4091638845f8f538aeda32891c/avatar_885ecb4091638845f8f538aeda32891c.jpg" atl="the-article-title"/>
+                    </div>
+                    <div class="the-article-title">
+                        <a href="#">
+                            <p>Chúng ta đang lạm dụng định nghĩa "đổi mới"</p>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

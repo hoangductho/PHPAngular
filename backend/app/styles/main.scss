@@ -1,0 +1,130 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+// vendor scss
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables";
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins";
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/grid";
+// endbower
+@import "variables";
+// -----------------------------------------------------------------h
+// Defining values  ;
+// ss: supper-small
+// xs: extra-small
+// sm: small
+// md: middle
+// lg: large
+$screen-xl-min: 1600px;
+$screen-lg-max: ($screen-xl-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-xs-min: 522px;
+$screen-ss-max: ($screen-xs-min - 1);
+
+// define media screen not express
+@media (max-width: $screen-ss-max) {
+  @include make-grid(ss);
+
+  .col-ss-0 {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-xs-max){
+  .col-xs-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-xs-min){
+  .col-xs-0-min {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-sm-max){
+  .col-sm-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-sm-min){
+  .col-sm-0-min {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-md-max){
+  .col-md-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min){
+  .col-md-0-min {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-lg-min){
+  .col-lg-0 {
+    display: none;
+  }
+}
+
+// End define screen
+// -----------------------------------------------------------------
+
+//== Mixins
+//
+//## function create general
+@mixin text-middle ($height) {
+  line-height: $height;
+  vertical-align: middle;
+}
+
+@mixin circle-box ($size) {
+  width: $size;
+  height: $size;
+  border: 1px solid $border-color;
+  border-radius: $size/2;
+}
+
+//== Main style
+//
+//## General style
+body {
+  background-color: $bg-color;
+}
+
+.non-padding {
+  padding: 0;
+}
+
+.php {
+  color: $php-color;
+}
+
+.ci {
+  color: $ci-color;
+}
+
+//== Block main
+//
+main {
+  width: 100%;
+  height: auto;
+  padding-top: $header-height;
+  position: relative;
+}
+
+//== Import components style
+//
+@import "header";
+@import "home";
+@import "footer";
+@import "articles";
+@import "auth";
+// -----------------------------------------------------------------

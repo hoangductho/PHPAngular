@@ -1,0 +1,45 @@
+<!-- List articles -->
+<div class="list-posts">
+    <div class='list-articles-header'>
+        <div class='list-title'>Articles Pending</div>
+    </div>
+    <hr>
+    <section >
+        <div class="normal-post">
+            <div class="normal-post-box">
+                <div class="normal-post-detail">
+                    <div class="normal-thumb-box">
+                        <div class="articles-management" style="position: absolute">
+                            <a ng-click="publish($index)" class="btn btn-primary pull-left">{{(normal.others>=1?'Unpublish':'Publish')}}</a>
+                            <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-info pull-left">Edit</a>
+                            <a ng-click="sethot($index)" class="btn btn-success pull-left">{{(normal.hot?'Unhot':'Hot')}}</a>
+                            <a ui-sref="main.articles.edit({id: normal._id})" class="btn btn-danger pull-left">Delete</a>
+                        </div>
+                        <img ng-src="http://api.vienvong.vn/uploader/fae29de0550e15a59566cb96a0f2e1b6/avatar_fae29de0550e15a59566cb96a0f2e1b6_thumb.jpg">
+                    </div>
+                    <div class="normal-info-box">
+                        <div class="normal-section">
+                            <div class="normal-title">
+                                <a ng-href="/express/{{normal._id}}?{{normal.friendly}}">
+                                    Máy tính sẽ trở thành gì trong tương lai?
+                                </a>
+                            </div>
+                            <div class="normal-description col-xs-0-max">
+                                <p>
+                                    Các định nghĩa tương lai về máy tính có thể sẽ không giống hiện nay. Nó có thể sẽ giống như một con người.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="normal-stats col-ss-0">
+                            <div class="normal-stats-sandbox">
+                                2015-07-22 16:07:59
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="load-more-box form-control btn normal-post" ng-click="loadMore()" ng-if="next"><i class="fa fa-plus"></i> Load More</div>
+<!-- End list articles

@@ -1,0 +1,58 @@
+<div class="auth-page container-fluid">
+	<div class="auth-box">
+		<!-- Login box control -->
+		<div class="login-box-control">
+		    <form>
+		        <div class="login-data">
+		            <div ng-if="!result.ok && result.err" class="invalid container-fluid">
+		                <i class="fa fa-times-circle"></i> <b>Please try again.</b> <br>
+		                {{result.err}}
+		            </div>
+		        </div>
+		        <div class="login-data row">
+		            <div class="container-fluid auth-icon">
+		                <div class="auth-icon-circle">
+		                    <i class="fa fa-5x fa-user"></i>
+		                </div>
+		            </div>
+		            <br>
+		            <div class="container-fluid">
+		                <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+		            </div>
+		            <div class="container-fluid" ng-if="!validate.email.valid">
+		                <p></p>
+		                <div class="form-valid" ng-bind-html="validate.email.mess">
+		                </div>
+		            </div>
+		        </div>
+		        <p></p>
+		        <div class="login-data row">
+		            <div class="container-fluid">
+		                <input type="password" name="password" ng-model="auth.password" ng-blur="valid('password')" placeholder="Password" class="form-control"/>
+		            </div>
+		            <div class="container-fluid" ng-if="!validate.password.valid">
+		                <p></p>
+		                <div class="form-valid" ng-bind-html="validate.password.mess">
+		                </div>
+		            </div>
+		        </div>
+		        <p></p>
+		        <!--<div class="login-data row">
+		            <div class="col-xs-12 pull-left" style="text-align: left">
+		                <input type="checkbox" name="keepMe" ng-model="keepMe"/>
+		                Keep Me logged in
+		            </div>
+		        </div>
+		        <p></p>-->
+		        <div class="login-data row">
+		            <div class="container-fluid">
+		                <button class="btn btn-primary" ng-class="{'disable': (scores < 2)}" ng-click="process()">Sing in</button>
+		                <button ng-click="reset()" class="btn btn-default">Clear</button>
+		            </div>
+		        </div>
+		    </form>
+		</div>
+
+		<!-- End login control -->
+	</div>
+</div>

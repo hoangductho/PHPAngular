@@ -1,0 +1,61 @@
+<header>
+        <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-menu" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="header-block pull-left">
+                <a href="/" class="header-logo">
+                  <div class="col-sm-0-max">
+                    <b><i class="php">PHP</i><span class="ci">Angular</span></b>
+                  </div>
+                  <div class="col-md-0-min">
+                    <b><i class="php">P</i><span class="ci">A <i class="fa fa-caret-down"></i></span></b>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="header-menu">
+              <ul class="nav navbar-nav">
+                <li ng-class="{'active':state.includes('main.articles')}"><a ui-sref="main.articles.list">Articles</a></li>
+                <li ng-class="{'active':state.includes('main.access')}"><a ui-sref="main.access.group">Access</a></li>
+                <li ng-class="{'active':state.includes('main.seo')}"><a ui-sref="main.seo">SEO</a></li>
+                <li ng-class="{'active':state.includes('main.campaign')}"><a ui-sref="main.campaign">Campaign</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <div class="auth-bar-box header-block col-xs-0-max">
+                    <div>
+                      <div class="user-name">
+                          Hoang Duc Tho
+                      </div>
+                      <div class="user-actions">
+                        <button class="btn-link" ng-click="toggle('loginbox')">Profile</button>
+                        <button class="btn-link" ui-sref="main.auth.registry">Sign out</button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form> -->
+            </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main class="container" ui-view=""></main>
+
+      <footer>
+        <p>@2015 PhpAngular</p>
+        <p><a href="//vienvong.vn">Vien Vong ICT</a></p>
+      </footer>

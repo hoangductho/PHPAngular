@@ -1,0 +1,199 @@
+
+// Header variables
+$header-bg-color: #f5fffa;
+// $header-bg-color: #fff;
+$header-border-color: $php-color;
+$header-shadow-color: #cec;
+$header-box-width: 300px;
+// End header variables
+
+// --------------------------------------------------------------------
+
+@media (min-height: $standard-height) {
+  header {
+    position: fixed;
+    z-index: 100
+  }
+}
+
+header {
+  height: $header-height;
+  width: 100%;
+}
+
+header {
+  background-color: $header-bg-color;
+  border-bottom: 1px solid $php-color;
+  box-shadow: 0 1px 0 $header-shadow-color;
+}
+
+@mixin header-padding ($padding) {
+  padding: 0 $padding;
+
+  @media (min-height: $screen-md-min) {
+    padding: 0 $padding*2;
+  }
+}
+
+.header-logo {
+  height: $header-height;
+  font-size: $h1-size;
+  font-family: 'Times New Roman';
+  display: inline-block;
+
+  @include header-padding($standard-space);
+  @include text-middle($header-height);
+}
+
+.header-active {
+  border-bottom: 1px solid $ci-color;
+}
+
+.header-package {
+  display: inline-block;
+  height: $header-height;
+  float: left;
+}
+
+.header-block {
+  margin: 0px $standard-space;
+}
+
+header {
+  .header-main-menu .nav > li > a,
+  .header-main-menu .nav > li{
+    height: $header-height;
+  }
+
+  .header-main-menu .nav > li > a{
+    color: $font-color;
+    padding-top: 20px;
+    font-size: $h4-size;
+    font-weight: 500;
+  }
+
+  .header-main-menu .nav > li > a:hover,
+  .header-main-menu .nav > li > a:focus,
+  .header-main-menu .nav > li.active > a{
+    background-color: $header-bg-color;
+    color: $ci-color;
+    border-bottom: 1px solid $ci-color;
+  }
+}
+
+header {
+  .facebook-bar-box {
+    margin-top: 5px;
+    font-size: 32px;
+  }
+}
+
+header {
+  .form-control {
+    border-radius: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  input, input:focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .search-bar-box {
+    float: left;
+    margin-top: 7px;
+    border: 1px solid $shadow-color;
+  }
+}
+
+header {
+  @media (max-width: $screen-sm-max) {
+    .header-main-menu,
+    .search-bar-box{
+      display: none;
+      height: auto;
+    }
+
+    .header-main-menu,
+    .search-bar-box{
+      width: $header-box-width;
+      position: absolute;
+      top: $header-height;
+      border: 1px solid $php-color;
+      z-index: 10;
+    }
+
+    .header-main-menu nav,
+    .header-main-menu ul,
+    .search-bar-box{
+      margin: 0;
+    }
+
+    .header-main-menu ul li {
+      width: 100%;
+      background-color: $header-bg-color;
+    }
+
+    .search-bar-box {
+      right: 0;
+    }
+
+    .search-bar-box input[type='text']{
+      width: $header-box-width - 40;
+    }
+  }
+}
+
+header {
+  .auth-bar-box {
+    margin-top: 5px;
+    font-size: $h5-size;
+  }
+
+  button.btn-link {
+    color: $ci-color !important;
+  }
+}
+
+/* Auth box style*/
+.login-box-control {
+    position: absolute;
+    top: $header-height;
+    right: 0;
+    z-index: 10;
+}
+
+@media (min-height: $standard-height) {
+  .login-box-control {
+    position: fixed;
+  }
+}
+
+.login-box-control {
+  display: none;
+  width: $header-box-width;
+  padding: $standard-space;
+  border: 1px solid $header-border-color;
+  background-color: $bg-color;
+}
+
+.login-box-control {
+  .auth-icon {
+    color: $shadow-color;
+    text-align: center;
+  }
+
+  .auth-icon-circle {
+    display: inline-block;
+    padding: $standard-space/2;
+    width: 5em;
+    height: 5em;
+    border-radius: 2.5em;
+    border: 1px solid #ccc;
+    overflow: hidden;
+  }
+}
+
+/* End auth box*/

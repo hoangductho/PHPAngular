@@ -1,0 +1,184 @@
+//== Main Style
+//
+.home {
+	float: left;
+	width: 100%;
+	height: auto;
+	display: table;
+}
+
+.home-left,
+.home-right {
+  float: none;
+	display: table-cell;
+	height: 100%;
+	vertical-align: top;
+}
+
+.home-left {
+	border-right: 1px solid $border-color;
+	
+	@media (max-width: $screen-sm-max) {
+		display: inline-block;
+		padding-left: $standard-space;
+		border: none;
+		height: auto;
+		position: fixed;
+		z-index: 10;
+	}
+
+	.navbar-default {
+		background-color: transparent;
+		border: none;
+
+		.collapse {
+			padding: 0;
+		}
+
+		a {
+			color: $text-opacity;
+		}
+
+		a:hover, a:focus, .active a {
+			color: $text-color;
+		}
+
+		.active a {
+			font-weight: bold;
+		}
+	}
+}
+
+//== List Post 
+//
+.list-posts,
+.senior-box {
+	// padding-top: $standard-space;
+	width: 100%;
+	max-width: 720px;
+  padding-top: $standard-space;
+  margin-bottom: $standard-space;
+}
+
+.list-posts {
+    .list-title {
+      font-size: $h2-size;
+      color: $text-opacity;
+    }
+
+    .btn {
+      border-radius: 1px;
+    }
+
+    .normal-post{
+      position: relative;
+      width: 100%;
+      border: 1px solid $border-color;
+      //box-shadow: 0 0 2px 2px $border-shadow;
+    }
+
+    .normal-post:after {
+      content: '';
+      display: block;
+      $height-normal-box: 100% * (7 / 16) * (9 / 16);
+      padding-top: $height-normal-box;
+    }
+
+    .normal-post {
+      margin-top: $standard-space;
+      background-color: $bg-color;
+    }
+
+    .normal-post {
+      .normal-post-detail{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .normal-thumb-box {
+        float: left;
+        width: (7 / 16) * 100%;
+        height: 100%;
+      }
+
+      .normal-thumb-box img {
+        width: 100%;
+        // height: 100%;
+      }
+
+      .normal-info-box {
+        float: right;
+        width: (9/16) * 100%;
+        height: 100%;
+      }
+
+      .normal-info-box {
+        .normal-section {
+          height: 100%;
+        }
+
+        .normal-section {
+          .normal-title {
+            max-height: $header-height - 1px;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: $h4-size;
+            padding: 7px;
+          }
+
+          .normal-description {
+            height: ($header-height - 1) * 2;
+            overflow: hidden;
+            font-size: $h5-size;
+            padding: 10px;
+          }
+        }
+
+        .normal-stats {
+          padding: 2px 7px;
+        }
+
+        .normal-stats {
+          .normal-stats-sandbox {
+            $this-height: ($header-height - 1) /2;
+            position: absolute;
+            height: $this-height;
+            margin-top: -($this-height);
+          }
+        }
+      }
+    }
+
+    @media (max-width: $screen-ss-max) {
+      .normal-post:after {
+        content: '';
+        display: block;
+        $height-normal-box: 100% * (9 / 16);
+        padding-top: $height-normal-box;
+      }
+
+      .normal-post {
+        .normal-thumb-box {
+          width: 100%;
+        }
+
+        .normal-info-box {
+          width: 100%;
+          height: $header-height;
+          margin-top: - ($header-height);
+        }
+
+        .normal-title {
+          color: $text-color;
+          height: $header-height;
+          background-color: #111;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .load-more-box {
+      color: $link-color;
+    }
+}

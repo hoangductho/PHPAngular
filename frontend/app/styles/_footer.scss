@@ -1,0 +1,59 @@
+// Footer Style
+/* footer variable */
+$footer-border-color: $php-color;
+$footer-shadow-color: #cec;
+$footer-bg-color: $bg-color;
+/* end variable init */
+
+footer {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: $standard-space;
+	padding-bottom: $standard-space;
+	border-top: 1px solid $footer-border-color;
+	box-shadow: -1px -1px 0 $footer-shadow-color;
+}
+
+.footer-package .footer-title{
+	text-decoration: underline;
+}
+
+.copy-right {
+	text-align: center;
+}
+
+footer {
+	hr {
+		border-top: 1px solid $php-color;
+	}
+
+	.site-info .nav > li > a,
+	.site-info .nav > li{
+	    height: $header-height;
+	}
+
+	.site-info .nav > li > a{
+		color: $font-color;
+		padding-top: 20px;
+		font-size: $h4-size;
+		font-weight: 500;
+	}
+
+	.site-info .nav > li > a:hover,
+	.site-info .nav > li > a:focus,
+	.site-info .nav > li.active > a{
+		background-color: transparent;
+		color: $ci-color;
+	}
+
+	@media (min-width: $screen-md-min) {
+		.footer-logo a {
+			padding-left: 0;
+		}
+
+		.site-info {
+			height: $header-height;
+		}
+	}
+}

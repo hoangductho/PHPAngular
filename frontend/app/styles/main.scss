@@ -1,0 +1,158 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+// Defining values  ;
+// ss: supper-small
+// xs: extra-small
+// sm: small
+// md: middle
+// lg: large
+$screen-xl-min: 1600px;
+$screen-lg-max: ($screen-xl-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-xs-min: 522px;
+$screen-ss-max: ($screen-xs-min - 1);
+
+// define media screen not express
+@media (max-width: $screen-ss-max) {
+  @include make-grid(ss);
+
+  .col-ss-0 {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-xs-max){
+  .col-xs-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-xs-min){
+  .col-xs-0-min {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-sm-max){
+  .col-sm-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-sm-min){
+  .col-sm-0-min {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-md-max){
+  .col-md-0-max {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min){
+  .col-md-0-min {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-lg-min){
+  .col-lg-0 {
+    display: none;
+  }
+}
+// End define screen
+// -----------------------------------------------------------------
+//
+// Define global variable
+$standard-space: 15px;
+$standard-height: $screen-xs-min;
+$header-height: 52px;
+
+$bg-color: #e9eaed;
+$main-bg-color: #eee;
+$ci-color: #dd4814;
+$php-color: #8892BF;
+$shadow-color: #ccc;
+$shadow-opacity-color: #ddd;
+$box-bg-color: #f6f7f8;
+
+$font-color: #000;
+
+$h1-size: 2em;
+$h2-size: 1.5em;
+$h3-size: 1.27em;
+$h4-size: 1.12em;
+$h5-size: 0.83em;
+$h6-size: 0.75em;
+
+// End define global variable
+// -----------------------------------------------------------------
+//
+// function create general
+@mixin text-middle ($height) {
+  line-height: $height;
+  vertical-align: middle;
+}
+// -----------------------------------------------------------------
+
+body {
+  background-color: $bg-color;
+}
+
+#main-frame {
+  display: block;
+  width: 100%;
+  padding: $standard-space 0;
+  padding-bottom: 0;
+}
+
+@media (min-height: $standard-height) {
+  #main-frame {
+    padding-top: $header-height + $standard-space;
+  }
+}
+
+.php {
+  color: $php-color;
+}
+
+.ci {
+  color: $ci-color;
+}
+
+.non-padding {
+  padding:0;
+}
+
+.non-margin {
+  margin: 0
+}
+
+.space {
+  float: left;
+  width: 100%;
+  margin-bottom: $standard-space;
+}
+
+.space-2x {
+  margin-bottom: ($standard-space * 2);
+}
+
+// -----------------------------------------------------------------
+// component:scss
+@import '_header.scss';
+@import '_footer.scss';
+@import '_home.scss';
+@import '_articles.scss';
+@import '_auth.scss';
+// end componet:scss
+// -----------------------------------------------------------------

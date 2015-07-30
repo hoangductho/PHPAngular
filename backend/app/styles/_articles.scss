@@ -1,0 +1,29 @@
+.create-article-form {
+	margin: $standard-space 0;
+	padding: $standard-space;
+	border: 1px solid $border-color;
+
+	textarea.noresize {
+		resize: none;
+	}
+
+	.form-control {
+		border-radius: 0;
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+.form-label {
+	font-size: $h3-size
+}
+
+.form-section {
+	margin-top: $standard-space;
+
+	.section-label {
+		font-size: $h5-size;
+		font-weight: bold;
+	}
+}
+

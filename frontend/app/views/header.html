@@ -1,0 +1,151 @@
+<!-- Header frame -->
+<header>
+    <!-- Logo box -->
+    <div class="header-package">
+        <a href="/" class="col-sm-0-max">
+            <div class="header-logo header-active">
+                <b><i class="php">PHP</i><span class="ci">Angular</span></b>
+            </div>
+        </a>
+        <a class="col-md-0-min" id="header-logo-menu" ng-click="toggle('menu')" off-click="hide('menu')">
+            <div class="header-logo header-active">
+                <b><i class="php">P</i><span class="ci">A <i class="fa fa-caret-down"></i></span></b>
+            </div>
+        </a>
+    </div>
+    <!-- End logo box -->
+
+    <!-- Main menu box -->
+    <div class="header-main-menu header-package" ng-class="{'show':menu}">
+        <nav class="nav">
+            <ul class="nav navbar-link navbar-nav">
+                <li class="active"><a href="#">CodeIgniter</a></li>
+                <li><a href="#">AngularJS</a></li>
+                <li><a href="#">MongoDB</a></li>
+                <li><a href="#">Apache</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- End main menu -->
+
+    <!-- User bar box -->
+    <div class="header-actions header-package pull-right">
+        <div class="auth-bar-box header-block col-xs-0-max">
+            <div ng-if="!online">
+                <div class="user-name">
+                    You are Anonymous!
+                </div>
+                <div class="user-actions">
+                    <button class="btn-link" ng-click="toggle('loginbox')">Sign in</button>
+                    <button class="btn-link" ui-sref="main.auth.registry">Sign up</button>
+                </div>
+            </div>
+            <div ng-if="online">
+                <div class="user-name">
+                    <p>{{online.email}}</p>
+                </div>
+                <div class="user-actions">
+                    <!--<button ui-sref="main.auth.profile">Profile</button>-->
+                    <button ui-sref="main.auth.logout">Sign out</button>
+                </div>
+            </div>
+        </div>
+        <div class="facebook-bar-box header-block col-sm-0-min">
+            <div ng-click="toggle('loginbox')">
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </div>
+    <!-- End user bar -->
+
+    <!-- Facebook bar box -->
+    <!-- <div class="header-package pull-right">
+        <div class="facebook-bar-box header-block pull-right">
+            <div ng-click="fbShow()">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </div>
+    </div> -->
+    <!-- End facebook bar -->
+
+    <!-- Search bar box -->
+    <div class="header-actions header-package pull-right">
+        <div class="search-bar-box header-block" ng-class="{'show':searchbox}"
+             off-click="hide('searchbox')" off-click-if="searchbox">
+            <!-- Search Box-->
+            <form ng-submit="searchArticle()">
+                <div class="pull-left none-padding-right">
+                    <input type="text" name="search" class="form-control">
+                </div>
+                <div class="pull-right">
+                    <button type="submit" class="form-control">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- End search box-->
+        </div>
+        <div id="search-button" class="header-block col-md-0-min pull-right">
+            <div class="header-button facebook-bar-box" ng-click="show('searchbox')">
+                <i class="fa fa-search primary-color"></i>
+            </div>
+        </div>
+    </div>
+    <!-- End search bar -->
+</header>
+<!-- End header -->
+
+<!-- Login box control -->
+<div class="login-box-control" ng-class="{'show': loginbox}" off-click="hide('loginbox')" off-click-if="loginbox">
+    <form>
+        <div class="login-data">
+            <div ng-if="!result.ok && result.err" class="invalid container-fluid">
+                <i class="fa fa-times-circle"></i> <b>Please try again.</b> <br>
+                {{result.err}}
+            </div>
+        </div>
+        <div class="login-data row">
+            <div class="container-fluid auth-icon">
+                <div class="auth-icon-circle">
+                    <i class="fa fa-5x fa-user"></i>
+                </div>
+            </div>
+            <br>
+            <div class="container-fluid">
+                <input type="text" name="email" ng-model="auth.email" ng-blur="valid('email')" placeholder="E-mail" class="form-control"/>
+            </div>
+            <div class="container-fluid" ng-if="!validate.email.valid">
+                <p></p>
+                <div class="form-valid" ng-bind-html="validate.email.mess">
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div class="login-data row">
+            <div class="container-fluid">
+                <input type="password" name="password" ng-model="auth.password" ng-blur="valid('password')" placeholder="Password" class="form-control"/>
+            </div>
+            <div class="container-fluid" ng-if="!validate.password.valid">
+                <p></p>
+                <div class="form-valid" ng-bind-html="validate.password.mess">
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <!--<div class="login-data row">
+            <div class="col-xs-12 pull-left" style="text-align: left">
+                <input type="checkbox" name="keepMe" ng-model="keepMe"/>
+                Keep Me logged in
+            </div>
+        </div>
+        <p></p>-->
+        <div class="login-data row">
+            <div class="container-fluid">
+                <button class="btn btn-primary" ng-class="{'disable': (scores < 2)}" ng-click="process()">Sing in</button>
+                <button ng-click="reset()" class="btn btn-default">Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- End login control -->

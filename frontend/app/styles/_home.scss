@@ -1,0 +1,147 @@
+// Home Page Style
+
+$art-border-color: #ccc;
+$ratio-main-content: 9/16;
+$art-title-bg-color: #000;
+$art-title-color: #fff;
+$art-border-width: 1px;
+$art-box-bg-color: #fff;
+$art-title-box-color: #cec;
+
+@media (min-width: $screen-md-min) {
+	.main-content {
+		margin-left: -$standard-space;
+	}
+}
+
+@media (min-width: $screen-xs-min) {
+	.main-content {
+		margin-right: -$standard-space;
+	}
+}
+
+.the-article .the-article-title {
+	a {
+		text-decoration: none;
+	}
+
+	p {
+		font-size: $h3-size;
+		font-weight: 500;
+		font-family: 'Times New Roman';
+		margin-top: $standard-space;
+	}
+}
+
+/* main content style */
+.main-content {
+	.list-articles {
+		.the-article {
+			border: 1px solid $art-border-color;
+			border-radius: 2px;
+			background-color: $art-box-bg-color;
+			padding: $standard-space;
+			margin-bottom: $standard-space;
+		}
+
+		.the-article::before {
+				content: "";
+				display: block;
+			}
+
+		.the-article img {
+			width: 100%;
+			height: 100%;
+			border: 1px solid #eee;
+		}
+
+		.the-article-title {
+			p {
+				color: #222;
+				font-size: $h2-size;
+			}
+		} 
+	}
+
+	.load-more {
+		border-radius: 2px;
+		box-shadow: none;
+		color: $ci-color;
+	}
+}
+
+/* relation content style */
+.suggest-content,
+.follow-content {
+	background-color: $art-box-bg-color;
+	padding: $standard-space;
+	border: 1px solid $art-border-color;
+	border-radius: 2px;
+}
+
+.suggest-content {
+	padding-bottom: 0
+}
+
+
+.suggest-content {
+	.list-articles {
+		.the-article {
+			border: $art-border-width solid $art-border-color;
+			width: 100%;
+			margin-bottom: $standard-space;
+			position: relative;
+		}
+
+		.the-article::before {
+				content: "";
+				display: block;
+			}
+
+		.the-article {
+			.the-article-thumb {
+				width: 100%;
+			}
+
+			.the-article-thumb img {
+				width: 100%;
+				height: 100%;
+			}
+
+			.the-article-title {
+				width: 100%;
+				height: auto;
+				display: inline-block;
+				position: absolute;
+				bottom: 0;
+			}
+
+			.the-article-title {
+				background-color: $art-title-box-color;
+				opacity: 0.7
+			}
+
+			.the-article-title {
+				p {
+					color: $font-color;
+					padding: 0 $standard-space/2;
+					margin-top: $standard-space/2;
+					margin-bottom: $standard-space/2;
+				}
+			}
+		}
+
+	}
+}
+
+// 
+.follow-content {
+	.follow-content-header {
+		font-size: $h2-size;
+		font-weight: 500;
+		font-family: 'Times New Roman';
+		margin-bottom: $standard-space;
+	}
+}
+
+// End home page 
