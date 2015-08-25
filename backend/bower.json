@@ -14,7 +14,9 @@
     "angular-touch": "1.2.16",
     "ui-router": "~0.2.15",
     "angular-markdown-toolkit": "*",
-    "sotos.crop-image": "*"
+    "sotos.crop-image": "*",
+    "angular-local-storage": "~0.2.2",
+    "Cryptojs": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

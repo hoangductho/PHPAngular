@@ -8,6 +8,6 @@
  * Controller of the backendApp
  */
 angular.module('backendApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $state) {
-    $rootScope.state = $state;
-  });
+	.controller('MainCtrl', function($scope, $rootScope, $state) {
+		$rootScope.state = $state;
+	});

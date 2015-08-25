@@ -10,17 +10,29 @@
  */
 angular
   .module('auth', [
-    'ui.router'
+    'ui.router',
+    'LocalStorageModule',
+    'ngResource'
   ])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('ls');
     // path to module
     var path = 'modules/auth/';
     // Now set up the states
     $stateProvider
       .state('auth', {
-        url: '/auth',
-        // abstract: true,
-        templateUrl: path + 'views/auth.html',
-        // controller: 'authCtrl'
+        abstract: true,
+        template: '<ui-view></ui-view>',
+        controller: 'authCtrl'
+      })
+      .state('auth.registry', {
+        url: '/auth/registry',
+        templateUrl: path + 'views/registry.html',
+        controller: 'registryCtrl'
+      })
+      .state('auth.login', {
+        url: '/auth/login',
+        templateUrl: path + 'views/login.html',
+        controller: 'loginCtrl'
       });
   });

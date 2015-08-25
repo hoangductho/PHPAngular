@@ -60,11 +60,19 @@
     <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
     <script src="bower_components/angular-markdown-toolkit/markdown.js"></script>
     <script src="bower_components/sotos.crop-image/dist/sotos.crop-image.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <script src="bower_components/pagedown-extra/pagedown/Markdown.Converter.js"></script>
     <script src="bower_components/pagedown-extra/pagedown/Markdown.Sanitizer.js"></script>
     <script src="bower_components/pagedown-extra/pagedown/Markdown.Editor.js"></script>
     <script src="bower_components/pagedown-extra/Markdown.Extra.js"></script>
+
+    <script src="bower_components/Cryptojs/dist/sha256.js"></script>
+    <script src="bower_components/Jsbn/jsbn.js"></script>
+    <script src="bower_components/Jsbn/jsbn2.js"></script>
+    <script src="bower_components/Jsbn/prng4.js"></script>
+    <script src="bower_components/Jsbn/rng.js"></script>
+    <script src="bower_components/Jsbn/rsa.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -88,6 +96,10 @@
     <script src="modules/cropImage/directives/cropLoaderDirective.js"></script>
 
     <script src="modules/auth/auth.js"></script>
+    <script src="modules/auth/controllers/authCtrl.js"></script>
+    <script src="modules/auth/controllers/registryCtrl.js"></script>
+    <script src="modules/auth/controllers/loginCtrl.js"></script>
+    <script src="modules/auth/factories/apiConnectFactory.js"></script>
     <!-- End module load -->
     <!-- endbuild -->
 </body>
